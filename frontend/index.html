@@ -1,43 +1,140 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>DDoS Live Dashboard</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Honeypot Distribution Dashboard</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
   </head>
   <body>
-    <header>
-      <h1>🌍 DDoS Live Dashboard</h1>
-      <div id="info">Connecting...</div>
-    </header>
-
-    <main>
-      <div id="globe-container"></div>
-
-      <aside id="panel">
-        <h3>Stats</h3>
-        <div id="alert-counter">Active Alerts: 0</div>
-        <canvas id="alert-chart" width="300" height="100"></canvas>
-
-        <div id="latest-info">
-          <div id="alert-counter-box">
-            <h3>Total Alerts</h3>
-            <span id="alert-counter">0</span>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="header-title">
+            <h1>🍯 Honeypot Distribution Dashboard</h1>
+            <p>Real-time SSH Attack Detection & Monitoring</p>
+          </div>
+          <div class="header-controls">
+            <select id="timeRange" class="time-select">
+              <option value="24h">Last 24 Hours</option>
+              <option value="7d">Last 7 Days</option>
+              <option value="30d">Last 30 Days</option>
+            </select>
+            <button id="exportBtn" class="btn btn-secondary">
+              📥 Export IOCs
+            </button>
+            <button id="reportBtn" class="btn btn-secondary">
+              📄 PDF Report
+            </button>
+            <button id="clearBtn" class="btn btn-danger">
+              🗑️ Clear Alerts
+            </button>
           </div>
         </div>
-        <button id="exportReportBtn" class="export-btn">
-          📊 Generate Analytical Report
-        </button>
-        <div id="cyber-tips" class="sidebar-section">
-          <h3>🛡️ Cyber Defense Tips</h3>
-          <p id="tip-text">Loading...</p>
-        </div>
-      </aside>
-    </main>
+      </header>
 
-    <script src="https://unpkg.com/three@0.150.0/build/three.min.js"></script>
-    <script src="https://unpkg.com/three-globe"></script>
+      <!-- Statistics Cards -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="stat-label">Total Attacks</div>
+          <div class="stat-value" id="totalAttacks">0</div>
+          <div class="stat-subtitle">SSH Intrusion Attempts</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Unique Attackers</div>
+          <div class="stat-value" id="uniqueAttackers">0</div>
+          <div class="stat-subtitle">Distinct IP Addresses</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Top Username</div>
+          <div class="stat-value stat-highlight" id="topUsername">-</div>
+          <div class="stat-subtitle">Most Attempted Credential</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Top Password</div>
+          <div class="stat-value stat-highlight" id="topPassword">-</div>
+          <div class="stat-subtitle">Most Used Password</div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <div class="content-grid">
+        <!-- Timeline Chart -->
+        <section class="card timeline-section">
+          <h2>Attacks Timeline</h2>
+          <p class="card-subtitle">
+            SSH attacks per minute over the selected time range
+          </p>
+          <canvas id="timelineChart"></canvas>
+        </section>
+
+        <!-- Attack Table -->
+        <section class="card table-section">
+          <h2>Recent Attacks</h2>
+          <p class="card-subtitle">
+            Latest SSH intrusion attempts detected by honeypots
+          </p>
+          <div class="table-wrapper">
+            <table class="attack-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Source IP</th>
+                  <th>Username</th>
+                  <th>Password</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="attackTable">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <button id="prevPage" class="btn btn-sm">← Previous</button>
+            <span id="pageInfo" class="page-info">Page 1</span>
+            <button id="nextPage" class="btn btn-sm">Next →</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Statistics Charts -->
+      <div class="content-grid">
+        <section class="card">
+          <h2>Top Usernames Targeted</h2>
+          <canvas id="usernameChart"></canvas>
+        </section>
+        <section class="card">
+          <h2>Top Passwords Used</h2>
+          <canvas id="passwordChart"></canvas>
+        </section>
+      </div>
+
+      <!-- IOCs Summary -->
+      <section class="card">
+        <h2>Malicious Indicators of Compromise (IOCs)</h2>
+        <p class="card-subtitle">
+          Export these indicators to your security tools
+        </p>
+        <div class="ioc-container">
+          <div class="ioc-section">
+            <h3>Malicious IPs</h3>
+            <div class="ioc-list" id="maliciousIPs">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+          <div class="ioc-section">
+            <h3>Compromised Credentials</h3>
+            <div class="ioc-list" id="credentials">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
