@@ -13,6 +13,7 @@ import os
 import subprocess
 import sys
 import time
+import pandas as pd
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -25,6 +26,7 @@ COWRIE_LOG_PATH = "~/honeypot/logs/cowrie.json"
 PROJECT_ROOT = Path(__file__).parent.parent
 TRAFFIC_LOG = PROJECT_ROOT / "data" / "traffic_log.csv"
 ALERTS_FILE = PROJECT_ROOT / "data" / "alerts.jsonl"
+DATA_FOLDER = PROJECT_ROOT / "data"
 
 # Cowrie specific
 KNOWN_PORTS = {22: "SSH", 23: "Telnet", 2222: "SSH-Honeypot"}
@@ -49,6 +51,8 @@ def fetch_cowrie_logs(limit=100):
                     logs.append(json.loads(line))
                 except json.JSONDecodeError:
                     continue
+        # save the logs inside data folder
+        save_log(logs)
         return logs
     except subprocess.TimeoutExpired:
         print("[!] SSH timeout")
@@ -56,6 +60,17 @@ def fetch_cowrie_logs(limit=100):
     except Exception as e:
         print(f"[!] Error: {e}")
         return []
+
+
+# Save Cowrie log entries to a JSON file in the data folder.
+def save_log(log_entries):
+    os.makedirs(DATA_FOLDER, exist_ok=True)
+    # Generate filename with timestamp
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filepath = os.path.join(DATA_FOLDER, f"honeypot_attacks_{timestamp}.csv")
+
+    df = pd.DataFrame(log_entries)
+    df.to_csv(filepath, index=False, encoding="utf-8")
 
 
 def cowrie_to_traffic_row(cowrie_log, dst_ip):
