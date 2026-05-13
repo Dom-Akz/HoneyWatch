@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>DDoS Live Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🌍 DDoS Live Dashboard</h1>
+      <div id="info">Connecting...</div>
+    </header>
+
+    <main>
+      <div id="globe-container"></div>
+
+      <aside id="panel">
+        <h3>Stats</h3>
+        <div id="alert-counter">Active Alerts: 0</div>
+        <canvas id="alert-chart" width="300" height="100"></canvas>
+
+        <div id="latest-info">
+          <div id="alert-counter-box">
+            <h3>Total Alerts</h3>
+            <span id="alert-counter">0</span>
+          </div>
+        </div>
+        <button id="exportReportBtn" class="export-btn">
+          📊 Generate Analytical Report
+        </button>
+        <div id="cyber-tips" class="sidebar-section">
+          <h3>🛡️ Cyber Defense Tips</h3>
+          <p id="tip-text">Loading...</p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="https://unpkg.com/three@0.150.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three-globe"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
