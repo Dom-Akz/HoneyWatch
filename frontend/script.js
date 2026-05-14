@@ -49,6 +49,7 @@ async function loadRealAlerts() {
 }
 
 // Sample data for demo/offline mode
+// !!Only get Call if api is unavailable!!
 function loadSampleAlerts() {
   const sampleAlerts = [
     {
