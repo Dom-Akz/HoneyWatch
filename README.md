@@ -64,17 +64,17 @@ HoneyWatch is a full-stack cybersecurity project that:
 
 **Tech stack:**
 
-| Component | Technology |
-|---|---|
-| Honeypot | Cowrie (medium-interaction SSH/Telnet) |
-| Containerization | Docker + docker-compose |
-| Victim VM | Ubuntu 22.04 |
-| Server / Controller | Arch Linux (or any Linux/macOS) |
-| Backend | Python 3.11 + Flask |
-| ML Detection | scikit-learn Random Forest |
-| Frontend Dashboard | HTML / CSS / JavaScript (Chart.js) |
-| Log Forwarding | SSH + `cowrie_to_traffic.py` |
-| Alert Storage | JSONL (`data/alerts.jsonl`) |
+| Component           | Technology                             |
+| ------------------- | -------------------------------------- |
+| Honeypot            | Cowrie (medium-interaction SSH/Telnet) |
+| Containerization    | Docker + docker-compose                |
+| Victim VM           | Ubuntu 22.04                           |
+| Server / Controller | Arch Linux (or any Linux/macOS)        |
+| Backend             | Python 3.11 + Flask                    |
+| ML Detection        | scikit-learn Random Forest             |
+| Frontend Dashboard  | HTML / CSS / JavaScript (Chart.js)     |
+| Log Forwarding      | SSH + `cowrie_to_traffic.py`           |
+| Alert Storage       | JSONL (`data/alerts.jsonl`)            |
 
 ---
 
@@ -206,18 +206,6 @@ source venv/bin/activate        # Linux / macOS
 pip install -r requirements.txt
 ```
 
-A minimal `requirements.txt` for this project:
-
-```
-flask
-flask-cors
-pandas
-scikit-learn
-joblib
-scapy
-requests
-```
-
 ### 2.4 Configure the Cowrie log forwarder
 
 Open `backend/cowrie_to_traffic.py` and edit the configuration block at the top:
@@ -320,17 +308,17 @@ New Cowrie alerts will stream into the dashboard in real time via Server-Sent Ev
 
 ## Dashboard Features
 
-| Feature | Description |
-|---|---|
-| **Live Alert Table** | Paginated table of all detection windows (attacked / normal) |
-| **Attacks Timeline** | Chart showing attack frequency over the selected time range |
-| **Top Sources Chart** | Bar chart of the most active attacker IPs |
-| **Probability Distribution** | Donut chart grouping alerts by ML confidence level |
-| **IOC Panel** | Lists malicious source IPs and high-confidence events |
-| **Export IOCs** | Downloads a structured `honeypot-iocs-<date>.json` file |
-| **PDF Report** | Opens a printable report with summary stats, top attackers, and high-probability alerts |
-| **Clear Alerts** | Wipes all in-memory alerts (does not delete the JSONL file) |
-| **Time Range Filter** | Filter the dashboard view to last 24h / 7d / 30d |
+| Feature                      | Description                                                                             |
+| ---------------------------- | --------------------------------------------------------------------------------------- |
+| **Live Alert Table**         | Paginated table of all detection windows (attacked / normal)                            |
+| **Attacks Timeline**         | Chart showing attack frequency over the selected time range                             |
+| **Top Sources Chart**        | Bar chart of the most active attacker IPs                                               |
+| **Probability Distribution** | Donut chart grouping alerts by ML confidence level                                      |
+| **IOC Panel**                | Lists malicious source IPs and high-confidence events                                   |
+| **Export IOCs**              | Downloads a structured `honeypot-iocs-<date>.json` file                                 |
+| **PDF Report**               | Opens a printable report with summary stats, top attackers, and high-probability alerts |
+| **Clear Alerts**             | Wipes all in-memory alerts (does not delete the JSONL file)                             |
+| **Time Range Filter**        | Filter the dashboard view to last 24h / 7d / 30d                                        |
 
 ### Report contents (PDF)
 
