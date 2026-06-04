@@ -18,8 +18,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # ============ CONFIGURATION ============
-UBUNTU_VM_IP = "192.168.1.8"  # CHANGE THIS
-UBUNTU_USER = "vboxuser"  # CHANGE THIS
+UBUNTU_VM_IP = "192.168.1.8"
+UBUNTU_USER = "vboxuser"
 COWRIE_LOG_PATH = "~/honeypot/logs/cowrie.json"
 
 # Project paths (on Arch)
