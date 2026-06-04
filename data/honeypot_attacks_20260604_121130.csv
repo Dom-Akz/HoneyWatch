@@ -1,0 +1,5 @@
+eventid,src_ip,src_port,dst_ip,dst_port,session,protocol,message,sensor,uuid,timestamp,duration
+cowrie.session.connect,192.168.26.51,57910.0,172.18.0.2,2222.0,e634166a608c,ssh,New connection: 192.168.26.51:57910 (172.18.0.2:2222) [session: e634166a608c],01fc225054e2,24b64046-4de0-11f1-8e89-da10fe3cd224,2026-05-18T09:40:49.690037Z,
+cowrie.session.closed,192.168.26.51,,,,e634166a608c,ssh,Connection lost after 0.0 seconds,01fc225054e2,24b64046-4de0-11f1-8e89-da10fe3cd224,2026-05-18T09:40:49.691072Z,0.0
+cowrie.session.connect,192.168.30.160,45422.0,172.18.0.2,2222.0,9c90292c53ef,ssh,New connection: 192.168.30.160:45422 (172.18.0.2:2222) [session: 9c90292c53ef],01fc225054e2,24b64046-4de0-11f1-8e89-da10fe3cd224,2026-05-18T10:27:41.806264Z,
+cowrie.session.closed,192.168.30.160,,,,9c90292c53ef,ssh,Connection lost after 0.0 seconds,01fc225054e2,24b64046-4de0-11f1-8e89-da10fe3cd224,2026-05-18T10:27:41.807191Z,0.0

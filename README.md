@@ -3,7 +3,7 @@
 > Real-time SSH attack detection, IOC collection, and threat visualization powered by a Cowrie honeypot and a Random Forest ML model.
 
 **Author:** Soufiane Moussaoui — EMSI 4CIRA  
-**Supervisor:** Prof. Khalid EL KHADIRI  
+**Supervisor:** Prof. ENNAJI Mohamed  
 **Academic Year:** 2025/2026
 
 ---

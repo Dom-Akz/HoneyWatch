@@ -691,20 +691,6 @@ function generatePDFReport() {
                 </tbody>
             </table>
 
-            <h2>High Probability Alerts (>80%)</h2>
-            <table>
-                <thead><tr><th>Timestamp</th><th>Probability</th><th>Packets</th><th>Unique Sources</th><th>Top Source</th></tr></thead>
-                <tbody>
-                    ${detectedAttacks
-                      .slice(0, 30)
-                      .map(
-                        (alert) =>
-                          `<tr><td>${alert.timestamp.toLocaleString()}</td><td><span class="critical">${(alert.probability * 100).toFixed(1)}%</span></td><td>${alert.pkts}</td><td>${alert.unique_srcs}</td><td>${alert.top_srcs ? Object.keys(alert.top_srcs)[0] : "N/A"}</td></tr>`,
-                      )
-                      .join("")}
-                </tbody>
-            </table>
-
             <h2>Detection Model Metrics</h2>
             <div class="stat">
                 <div class="stat-label">Total Alerts Processed</div>

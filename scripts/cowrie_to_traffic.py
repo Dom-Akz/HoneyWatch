@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # ============ CONFIGURATION ============
-UBUNTU_VM_IP = "192.168.1.8"
+UBUNTU_VM_IP = "192.168.1.13"
 UBUNTU_USER = "vboxuser"
 COWRIE_LOG_PATH = "~/honeypot/logs/cowrie.json"
 
